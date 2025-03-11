@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				
 				setStore({ favoriteName: store.favoriteName.filter((_,indice) =>indice !==index)})
-
+  
 
 			},
 			loadSomeData: () => {
