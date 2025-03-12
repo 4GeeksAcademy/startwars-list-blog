@@ -4,7 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			nave: [
 
 			],
-			favoriteName: []
+			planets:[],
+			favoriteName: [],
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -15,8 +17,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				if (store.favoriteName.includes(name)) return
 				setStore({ favoriteName: [...store.favoriteName, name] })
-
-
+			},
+			agregarPlanet: (name) => {
+				const store = getStore();
+				if (store.favoriteName.includes(name)) return
+				setStore({ favoriteName: [...store.favoriteName, name] })
 			},
 			deleteFavorite: (index) => {
 				const store = getStore();
@@ -34,6 +39,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"https://swapi.dev/api/people")
 					.then(res => res.json())
 					.then(res => setStore({ nave: res.results }))
+					.catch(err => console.log(err))
+
+				fetch(
+					"https://swapi.dev/api/planets")
+					.then(res => res.json())
+					.then(res => setStore({ planets: res.results }))
 					.catch(err => console.log(err))
 			},
 			changeColor: (index, color) => {
